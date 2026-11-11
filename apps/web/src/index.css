@@ -1,0 +1,86 @@
+@import 'tailwindcss';
+
+/* Dark Mode über Klasse auf <html> (System / Hell / Dunkel umschaltbar) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-soft: #eff6ff;
+  /* Flächen (Karten, Panels, Leisten) */
+  --color-surface: #ffffff;
+}
+
+/*
+ * Dunkles Theme: Die Graustufen werden nach ihrer Rolle umgemappt
+ * (50/100 = Hintergründe, 200/300 = Linien, 500–900 = Text), dazu
+ * gedämpfte Status-Töne. So bleiben die Komponenten frei von dark:-Klassen.
+ */
+.dark {
+  color-scheme: dark;
+  --color-surface: #1b1b1f;
+  --color-zinc-50: #121215;
+  --color-zinc-100: #26262b;
+  --color-zinc-200: #323238;
+  --color-zinc-300: #45454c;
+  --color-zinc-400: #71717a;
+  --color-zinc-500: #a1a1aa;
+  --color-zinc-600: #b4b4bc;
+  --color-zinc-700: #d4d4d8;
+  --color-zinc-800: #e4e4e7;
+  --color-zinc-900: #f4f4f5;
+  --color-zinc-950: #fafafa;
+
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-accent-soft: #172341;
+
+  --color-red-50: #2a1416;
+  --color-red-100: #3b171b;
+  --color-red-200: #5c1f26;
+  --color-red-600: #f87171;
+  --color-red-700: #fca5a5;
+  --color-red-900: #fecaca;
+
+  --color-amber-50: #2a2112;
+  --color-amber-100: #3d2e13;
+  --color-amber-600: #fbbf24;
+  --color-amber-700: #fbbf24;
+  --color-amber-800: #fcd34d;
+  --color-amber-900: #fde68a;
+
+  --color-emerald-50: #10271e;
+  --color-emerald-600: #34d399;
+  --color-emerald-700: #6ee7b7;
+
+  --color-blue-50: #121d33;
+  --color-blue-100: #1b2b4b;
+  --color-blue-600: #60a5fa;
+  --color-blue-700: #93c5fd;
+  --color-blue-900: #bfdbfe;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-900 antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  opacity: 0.4;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}
